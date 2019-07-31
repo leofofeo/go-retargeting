@@ -10,6 +10,8 @@ import (
 func main() {
 	file := "7-22-19_retargeting.csv"
 	readSegmentationFile(file)
+	fmt.Print(getColumnsToKeep())
+	fmt.Print(getCredentials())
 }
 
 func readSegmentationFile(filename string) {
