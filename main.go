@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	file := "7-22-19_retargeting.csv"
+	file := "07-29-2019_retargeting.csv"
 	readSegmentationFile(file)
 	columns := getColumnsToKeep()
 	credentials := getCredentials()
