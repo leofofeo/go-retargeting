@@ -4,19 +4,16 @@ import (
 	"bufio"
 	"encoding/csv"
 	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
 	"os"
 )
 
 func main() {
-	// file := "07-29-2019_retargeting.csv"
 	credentials := getCredentials()
 	apiKey := getAPIKey(credentials)
-	// makeVisitorAPICall()
-	// readSegmentationFile(file)
-	// columns := getColumnsToKeep()
-
-	// columns.printInfo()
-	// credentials.printInfo()
+	makeVisitorAPICall(apiKey, credentials["pAPIUserKey"])
 	fmt.Println("API key:", apiKey)
 }
 
@@ -30,10 +27,26 @@ func readSegmentationFile(filename string) {
 	fmt.Println(reader)
 }
 
-func makeVisitorAPICall() {
-	// baseUrl := "https://pi.pardot.com/api/prospect/version/4/do/query?"
-	// apiKey := ""
-	// createdAfter := "last_7_days"
-	// createdBefore := "today"
-	// onlyIdentified := "true"
+func makeVisitorAPICall(apiKey string, userKey string) {
+	baseURL := "https://pi.pardot.com/api/prospect/version/4/do/query?"
+	createdAfter := "last_7_days"
+	createdBefore := "today"
+	onlyIdentified := "true"
+
+	securityParams := "user_key=" + userKey + "&api_key=" + apiKey
+	filterParams := "&created_after" + createdAfter + "&created_before=" + createdBefore + "&only_identified=" + onlyIdentified
+	url := baseURL + securityParams + filterParams
+
+	resp, err := http.Get(url)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Println(string(body))
+
 }
