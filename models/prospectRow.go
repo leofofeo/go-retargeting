@@ -1,15 +1,17 @@
 package models
 
-type prospect struct {
-	prospectID             int
+// ProspectRow captures all information about a prospect needed to export as single row in csv file
+// ProspectRow should receive information from appropriate XMLStructs, which themselves unmarshal data from XMLResponse
+type ProspectRow struct {
+	prospectID             string
 	firstName              string
 	lastName               string
 	email                  string
 	company                string
 	lastPageViewDate       string
-	siteID                 int
+	siteID                 string
 	firstAssigned          string
-	score                  int
+	score                  string
 	salesChannel           string
 	annualRevenue          string
 	frequency              string
@@ -26,4 +28,6 @@ type prospect struct {
 	jobTitle               string
 	department             string
 	companyType            string
+	totalPageViews         string
+	minutesOnSite          string
 }

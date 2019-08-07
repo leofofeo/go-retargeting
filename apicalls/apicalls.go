@@ -49,8 +49,6 @@ func makeVisitorAPICall(apiKey string, userKey string) []byte {
 	filterParams := "&created_after" + createdAfter + "&created_before=" + createdBefore + "&only_identified=" + onlyIdentified
 	url := baseURL + securityParams + filterParams
 
-	fmt.Println(url)
-
 	resp, err := http.Get(url)
 	if err != nil {
 		log.Fatalln(err)
