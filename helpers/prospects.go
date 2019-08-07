@@ -51,11 +51,8 @@ func OrganizeProspects(xmlVisitors models.VisitorsXMLResp) Prospects {
 }
 
 func emailIsInvalid(email string) bool {
-	invalid := false
-
 	if strings.Contains(email, "epromos") || strings.Contains(email, "motivators") {
-		invalid = true
+		return true
 	}
-
-	return invalid
+	return false
 }
