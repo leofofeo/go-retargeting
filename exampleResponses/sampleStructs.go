@@ -52,9 +52,9 @@ type xmlResp struct {
 //             <id>141844123</id>
 //             <campaign_id>44516</campaign_id>
 //             <salutation></salutation>
-//             <first_name>Ashley</first_name>
-//             <last_name>Brown</last_name>
-//             <email>gusandash@gmail.com</email>
+//             <first_name>Hello</first_name>
+//             <last_name>World</last_name>
+//             <email>test@gmail.com</email>
 //             <password/>
 //             <company>Century21</company>
 //             <website></website>
@@ -81,12 +81,12 @@ type xmlResp struct {
 //             <last_activity_at>2019-08-05 00:02:27</last_activity_at>
 //             <recent_interaction>Inactive since: Aug 5, 2019</recent_interaction>
 //             <crm_lead_fid/>
-//             <crm_contact_fid>0031I00000t97vqQAA</crm_contact_fid>
-//             <crm_owner_fid>0051I000001STGrQAO</crm_owner_fid>
+//             <crm_contact_fid>0031ITL00000t97vqQAA</crm_contact_fid>
+//             <crm_owner_fid>0051I000001STGTLrQAO</crm_owner_fid>
 //             <crm_account_fid/>
-//             <salesforce_fid>0031I00000t97vqQAA</salesforce_fid>
+//             <salesforce_fid>0031I00000t9TL7vqQAA</salesforce_fid>
 //             <crm_last_sync>2019-08-05 11:35:13</crm_last_sync>
-//             <crm_url>https://epromos.my.salesforce.com/0031I00000t97vqQAA</crm_url>
+//             <crm_url>https://brapbrap.com/0031I00000t97vqQAA</crm_url>
 //             <is_do_not_email></is_do_not_email>
 //             <is_do_not_call></is_do_not_call>
 //             <opted_out></opted_out>
@@ -95,15 +95,15 @@ type xmlResp struct {
 //             <created_at>2019-08-05 00:02:27</created_at>
 //             <updated_at>2019-08-06 07:10:02</updated_at>
 //             <campaign>
-//                 <id>44516</id>
-//                 <name>ePromos Forms</name>
+//                 <id>44513326</id>
+//                 <name>Test Form Campaign</name>
 //             </campaign>
 //             <assigned_to>
 //                 <user>
-//                     <id>13400982</id>
-//                     <email>chandrell.scott@epromos.com</email>
-//                     <first_name>Chandrell</first_name>
-//                     <last_name>Scott</last_name>
+//                     <id>1340098232</id>
+//                     <email>owner@company.com</email>
+//                     <first_name>Hehe</first_name>
+//                     <last_name>Brown</last_name>
 //                     <job_title>eCommerce Consultant</job_title>
 //                     <role>Sales Manager</role>
 //                     <account>526761</account>
@@ -122,7 +122,7 @@ type xmlResp struct {
 //                     <form_handler_id>4064</form_handler_id>
 //                     <campaign>
 //                         <id>44516</id>
-//                         <name>ePromos Forms</name>
+//                         <name>Test</name>
 //                     </campaign>
 //                     <created_at>2019-08-05 00:02:27</created_at>
 //                 </visitor_activity>
@@ -131,11 +131,11 @@ type xmlResp struct {
 //             <Custom_12_Month_Rolling_Revenue_Amount>0</Custom_12_Month_Rolling_Revenue_Amount>
 //             <Custom_2_Year_Revenue_ASI>0</Custom_2_Year_Revenue_ASI>
 //             <Custom_2_Year_Revenue_Contact>0</Custom_2_Year_Revenue_Contact>
-//             <Ad_Group>Promo Items</Ad_Group>
+//             <Ad_Group>Ad Test Group</Ad_Group>
 //             <Ad_ID>342752590934</Ad_ID>
 //             <Ad_Network>Google search</Ad_Network>
-//             <Contact_Full_Name>Ashley Brown</Contact_Full_Name>
-//             <Contact_Owner_Role>Team Leah ecommerce Consultant</Contact_Owner_Role>
+//             <Contact_Full_Name></Contact_Full_Name>
+//             <Contact_Owner_Role>Hello Worldt</Contact_Owner_Role>
 //             <Created_Date_Salesforce>2019-08-05</Created_Date_Salesforce>
 //             <Device>Mobile devices with full browsers</Device>
 //             <Do_Not_Call>false</Do_Not_Call>
@@ -148,7 +148,7 @@ type xmlResp struct {
 //             <GCLid>Cj0KCQjwhJrqBRDZARIsALhp1WSihhebsNQsdY8QClYrGzbBANc7uddfIQozg2z3I7vpZhSAaxVBZhwaAuCVEALw_wcB</GCLid>
 //             <Keyword>promotional items</Keyword>
 //             <Last_RFM_Date>2019-08-05</Last_RFM_Date>
-//             <Lead_Full_Name>Ashley Brown</Lead_Full_Name>
+//             <Lead_Full_Name>Test Contact</Lead_Full_Name>
 //             <Lead_Status>Unqualified</Lead_Status>
 //             <Lifetime_Revenue_ASI>0</Lifetime_Revenue_ASI>
 //             <Lifetime_Revenue_Contact>0</Lifetime_Revenue_Contact>

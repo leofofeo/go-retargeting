@@ -11,3 +11,8 @@ type AuthenticatingXMLResp struct {
 	APIKey     string   `xml:"api_key"`
 	VersionTag string   `xml:"version"`
 }
+
+// VisitorsXMLResp corresponds to the Pardot response for visitors from GetVisitorsData
+type VisitorsXMLResp struct {
+	XMLName xml.Name `xml:"rsp"`
+}

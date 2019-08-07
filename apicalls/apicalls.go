@@ -38,3 +38,34 @@ func GetAPIKey(c credentials.Credentials) string {
 	apiKey := xmlRSP.APIKey
 	return apiKey
 }
+
+func makeVisitorAPICall(apiKey string, userKey string) []byte {
+	baseURL := "https://pi.pardot.com/api/prospect/version/4/do/query?"
+	createdAfter := "last_7_days"
+	createdBefore := "today"
+	onlyIdentified := "true"
+
+	securityParams := "user_key=" + userKey + "&api_key=" + apiKey
+	filterParams := "&created_after" + createdAfter + "&created_before=" + createdBefore + "&only_identified=" + onlyIdentified
+	url := baseURL + securityParams + filterParams
+
+	fmt.Println(url)
+
+	resp, err := http.Get(url)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	return body
+}
+
+// GetVisitorData retrieves visitors in 7 day timeframe from Pardot API
+func GetVisitorData(apiKey string, userKey string) visitorData {
+	visitorData := makeVisitorAPICall(apiKey, userKey)
+	return visitorData
+}
