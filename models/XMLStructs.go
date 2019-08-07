@@ -24,7 +24,7 @@ type VisitorsXMLResp struct {
 func (v VisitorsXMLResp) PrintSizeInfo() {
 	fmt.Println("Prospects:", len(v.Result.Prospects))
 	fmt.Print("Total results:", v.Result.TotalResults)
-	v.printProspectSampleInfo(100)
+	v.printProspectSampleInfo(0)
 }
 
 func (v VisitorsXMLResp) printProspectSampleInfo(size int) {

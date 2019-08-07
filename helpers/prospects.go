@@ -3,6 +3,7 @@ package helpers
 import (
 	"fmt"
 	"go-retargeting/models"
+	"strings"
 )
 
 // Prospects is slice of Prospect Row
@@ -19,6 +20,11 @@ func OrganizeProspects(xmlVisitors models.VisitorsXMLResp) Prospects {
 
 	visitors := xmlVisitors.Result.Prospects
 	for _, v := range visitors {
+
+		if emailIsInvalid(v.Email) {
+			fmt.Printf("%v is an invalid email\n", v.Email)
+			continue
+		}
 		pr := models.ProspectRow{}
 		pr.ProspectID = v.ID
 		pr.FirstName = v.FirstName
@@ -42,4 +48,14 @@ func OrganizeProspects(xmlVisitors models.VisitorsXMLResp) Prospects {
 	}
 
 	return prospects
+}
+
+func emailIsInvalid(email string) bool {
+	invalid := false
+
+	if strings.Contains(email, "epromos") || strings.Contains(email, "motivators") {
+		invalid = true
+	}
+
+	return invalid
 }
