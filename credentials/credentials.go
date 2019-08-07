@@ -1,14 +1,15 @@
-package main
+package credentials
 
 import "fmt"
 
-type credentials map[string]string
+type Credentials map[string]string
 
-func getCredentials() credentials {
+// GetCredentials returns map of user credentials for initiating API calls
+func GetCredentials() Credentials {
 	// The following variables aren't being pushed to Git.
 	// Set them up as global constants in separate file when working on
 	// a different computer.
-	m := credentials{
+	m := Credentials{
 		"pAPIUserKey":    apiUserKey,
 		"pEmail":         email,
 		"pPassword":      password,
@@ -18,7 +19,7 @@ func getCredentials() credentials {
 	return m
 }
 
-func (c credentials) printInfo() {
+func (c Credentials) PrintInfo() {
 	for k, v := range c {
 		fmt.Printf("%v: %v\n", k, v)
 	}

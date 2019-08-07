@@ -1,7 +1,5 @@
 # Links for relevant APIs
 
-
-
 ## Visitors api
 - http://developer.pardot.com/kb/api-version-4/visitors/
 - Parameters:

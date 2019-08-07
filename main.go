@@ -4,15 +4,17 @@ import (
 	"bufio"
 	"encoding/csv"
 	"fmt"
-	"io/ioutil"
-	"log"
-	"net/http"
+	"go-retargeting/apicalls"
+	"go-retargeting/credentials"
+	"go-retargeting/helpers"
 	"os"
 )
 
 func main() {
-	credentials := getCredentials()
-	apiKey := getAPIKey(credentials)
+	credentials := credentials.GetCredentials()
+	columns := helpers.GetColumnsToKeep()
+	columns.PrintInfo()
+	apiKey := apicalls.GetAPIKey(credentials)
 	makeVisitorAPICall(apiKey, credentials["pAPIUserKey"])
 	fmt.Println("API key:", apiKey)
 }
@@ -37,16 +39,18 @@ func makeVisitorAPICall(apiKey string, userKey string) {
 	filterParams := "&created_after" + createdAfter + "&created_before=" + createdBefore + "&only_identified=" + onlyIdentified
 	url := baseURL + securityParams + filterParams
 
-	resp, err := http.Get(url)
-	if err != nil {
-		log.Fatalln(err)
-	}
+	fmt.Println(url)
 
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatalln(err)
-	}
+	// resp, err := http.Get(url)
+	// if err != nil {
+	// 	log.Fatalln(err)
+	// }
 
-	fmt.Println(string(body))
+	// body, err := ioutil.ReadAll(resp.Body)
+	// if err != nil {
+	// 	log.Fatalln(err)
+	// }
+
+	// fmt.Println(string(body))
 
 }

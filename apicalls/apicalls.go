@@ -1,20 +1,17 @@
-package main
+package apicalls
 
 import (
 	"encoding/xml"
+	"fmt"
+	"go-retargeting/credentials"
+	"go-retargeting/models"
 	"io/ioutil"
 	"log"
 	"net/http"
 )
 
-type xmlResp struct {
-	XMLName     xml.Name `xml:"rsp"`
-	Description string   `xml:",innerxml"`
-	APIKey      string   `xml:"api_key"`
-	Version     string   `xml:"version"`
-}
-
-func getAPIKey(c credentials) string {
+// GetAPIKey authenticates user info with api_user_key and gets api_key from Pardot API
+func GetAPIKey(c credentials.Credentials) string {
 	baseURL := "https://pi.pardot.com/api/login/version/3 HTTP/1.1?"
 	userKey := c["pAPIUserKey"]
 	email := c["pEmail"]
@@ -31,8 +28,13 @@ func getAPIKey(c credentials) string {
 		log.Fatalln(err)
 	}
 	xmlResponseBodyBytes := body
-	xmlRSP := xmlResp{}
+	xmlRSP := models.AuthenticatingXMLResp{}
 	xml.Unmarshal(xmlResponseBodyBytes, &xmlRSP)
+	fmt.Println(xmlRSP)
+	fmt.Println("xmlRSP api key is", xmlRSP.APIKey)
+	fmt.Println("xmlRSP version is", xmlRSP.Version)
+	fmt.Println("xmlRSP version tag is", xmlRSP.VersionTag)
+
 	apiKey := xmlRSP.APIKey
 	return apiKey
 }

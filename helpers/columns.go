@@ -1,10 +1,12 @@
-package main
+package helpers
 
 import "fmt"
 
+// Columns is a []string type
 type columns []string
 
-func getColumnsToKeep() columns {
+// GetColumnsToKeep returns list of columns to keep in CSV file
+func GetColumnsToKeep() columns {
 	var columns = []string{"Prospect Id", "First Name", "Last Name", "Email", "Company", "Last Pageview Date", "Site Id", "First Assigned",
 		"Score", "Sales Channel", "Annual Revenue", "Frequency", "Monetary", "Recency", "Industry",
 		"Seniority", "Employee Range", "Estimated Annual Revenue", "Industry Group", "Sector", "Segment",
@@ -12,7 +14,7 @@ func getColumnsToKeep() columns {
 	return columns
 }
 
-func (c columns) printInfo() {
+func (c columns) PrintInfo() {
 	for _, column := range c {
 		fmt.Println(column)
 	}
