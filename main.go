@@ -8,9 +8,11 @@ import (
 
 func main() {
 	credentials := credentials.GetCredentials()
-	columns := helpers.GetColumnsToKeep()
-	columns.PrintInfo()
+	// columns := helpers.GetColumnsToKeep()
+	// columns.PrintInfo()
 	apiKey := apicalls.GetAPIKey(credentials)
 	visitorData := apicalls.GetVisitorData(apiKey, credentials["pAPIUserKey"])
-	visitorData.PrintByteSliceSize()
+	visitorData.PrintSizeInfo()
+	prospects := helpers.OrganizeProspects(visitorData)
+	prospects.PrintSliceSize()
 }

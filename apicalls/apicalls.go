@@ -63,7 +63,14 @@ func makeVisitorAPICall(apiKey string, userKey string) []byte {
 }
 
 // GetVisitorData retrieves visitors in 7 day timeframe from Pardot API
-func GetVisitorData(apiKey string, userKey string) visitorData {
+func GetVisitorData(apiKey string, userKey string) models.VisitorsXMLResp {
 	visitorData := makeVisitorAPICall(apiKey, userKey)
-	return visitorData
+	parsedVisitorData := parseVisitorData(visitorData)
+	return parsedVisitorData
+}
+
+func parseVisitorData(b []byte) models.VisitorsXMLResp {
+	visitorsXMLResp := models.VisitorsXMLResp{}
+	xml.Unmarshal(b, &visitorsXMLResp)
+	return visitorsXMLResp
 }
