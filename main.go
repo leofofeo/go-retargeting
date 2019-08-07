@@ -8,12 +8,16 @@ import (
 )
 
 func main() {
-	file := "07-29-2019_retargeting.csv"
-	readSegmentationFile(file)
-	columns := getColumnsToKeep()
+	// file := "07-29-2019_retargeting.csv"
 	credentials := getCredentials()
-	columns.printInfo()
-	credentials.printInfo()
+	apiKey := getAPIKey(credentials)
+	// makeVisitorAPICall()
+	// readSegmentationFile(file)
+	// columns := getColumnsToKeep()
+
+	// columns.printInfo()
+	// credentials.printInfo()
+	fmt.Println("API key:", apiKey)
 }
 
 func readSegmentationFile(filename string) {
@@ -24,4 +28,12 @@ func readSegmentationFile(filename string) {
 	}
 	reader := csv.NewReader(bufio.NewReader(csvFile))
 	fmt.Println(reader)
+}
+
+func makeVisitorAPICall() {
+	// baseUrl := "https://pi.pardot.com/api/prospect/version/4/do/query?"
+	// apiKey := ""
+	// createdAfter := "last_7_days"
+	// createdBefore := "today"
+	// onlyIdentified := "true"
 }
