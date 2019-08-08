@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 // GetAPIKey authenticates user info with api_user_key and gets api_key from Pardot API
@@ -39,14 +40,14 @@ func GetAPIKey(c credentials.Credentials) string {
 	return apiKey
 }
 
-func makeVisitorAPICall(apiKey string, userKey string) []byte {
+func makeVisitorAPICall(apiKey string, userKey string, offset int) []byte {
 	baseURL := "https://pi.pardot.com/api/prospect/version/4/do/query?"
 	createdAfter := "last_7_days"
 	createdBefore := "today"
 	onlyIdentified := "true"
-
+	stringOffset := strconv.Itoa(offset)
 	securityParams := "user_key=" + userKey + "&api_key=" + apiKey
-	filterParams := "&created_after" + createdAfter + "&created_before=" + createdBefore + "&only_identified=" + onlyIdentified
+	filterParams := "&created_after" + createdAfter + "&created_before=" + createdBefore + "&only_identified=" + onlyIdentified + "&offset=" + stringOffset
 	url := baseURL + securityParams + filterParams
 
 	resp, err := http.Get(url)
@@ -63,14 +64,15 @@ func makeVisitorAPICall(apiKey string, userKey string) []byte {
 }
 
 // GetVisitorData retrieves visitors in 7 day timeframe from Pardot API
-func GetVisitorData(apiKey string, userKey string) models.VisitorsXMLResp {
-	visitorData := makeVisitorAPICall(apiKey, userKey)
+func GetVisitorData(apiKey string, userKey string, offset int) models.VisitorsXMLResp {
+	visitorData := makeVisitorAPICall(apiKey, userKey, offset)
 	parsedVisitorData := parseVisitorData(visitorData)
 	return parsedVisitorData
 }
 
 func parseVisitorData(b []byte) models.VisitorsXMLResp {
 	visitorsXMLResp := models.VisitorsXMLResp{}
+	fmt.Println(visitorsXMLResp)
 	xml.Unmarshal(b, &visitorsXMLResp)
 	return visitorsXMLResp
 }

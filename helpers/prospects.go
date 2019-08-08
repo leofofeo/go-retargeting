@@ -22,7 +22,7 @@ func OrganizeProspects(xmlVisitors models.VisitorsXMLResp) Prospects {
 	for _, v := range visitors {
 
 		if emailIsInvalid(v.Email) {
-			fmt.Printf("%v is an invalid email\n", v.Email)
+			// fmt.Printf("%v is an invalid email\n", v.Email)
 			continue
 		}
 		pr := models.ProspectRow{}

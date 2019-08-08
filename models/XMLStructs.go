@@ -20,13 +20,6 @@ type VisitorsXMLResp struct {
 	Version string   `xml:"version,attr"`
 }
 
-// PrintSizeInfo total results as contained in the XML tag as well as the size of the Prospect array
-func (v VisitorsXMLResp) PrintSizeInfo() {
-	fmt.Println("Prospects:", len(v.Result.Prospects))
-	fmt.Print("Total results:", v.Result.TotalResults)
-	v.printProspectSampleInfo(0)
-}
-
 func (v VisitorsXMLResp) printProspectSampleInfo(size int) {
 	for i := size; i < size+20; i++ {
 		p := v.Result.Prospects[i]
@@ -37,7 +30,7 @@ func (v VisitorsXMLResp) printProspectSampleInfo(size int) {
 // Result tag for Pardot response - contained within VisitorsXMLResp
 type Result struct {
 	XMLName      xml.Name   `xml:"result"`
-	TotalResults int        `xml:"total_results"`
+	TotalResults string     `xml:"total_results"`
 	Prospects    []Prospect `xml:"prospect"`
 }
 
